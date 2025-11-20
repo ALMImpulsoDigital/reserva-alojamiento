@@ -11,10 +11,10 @@ const containerStyle = {
   height: '400px',
 };
 
-// Coordenadas de Tanti, Córdoba, Argentina
-const tantiCenter = {
-  lat: -31.3547972,
-  lng: -64.592479,
+// ✅ Coordenadas del punto en Suiza
+const swissCenter = {
+  lat: 47.0502,
+  lng: 8.3093,
 };
 
 const Ubicacion: React.FC = () => {
@@ -22,23 +22,22 @@ const Ubicacion: React.FC = () => {
   const [mapLoaded, setMapLoaded] = useState(false);
 
   useEffect(() => {
-    if (!window.google || !google.maps) return; // ✅ Verificamos que la API de Google Maps está cargada
+    if (!window.google || !google.maps) return;
   }, []);
 
-  // Función para abrir Google Maps en una nueva pestaña
+  // ✅ Abrir el mismo punto en Google Maps
   const handleOpenInMaps = () => {
-    const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=47.0502,8.3093`;
+    const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${swissCenter.lat},${swissCenter.lng}`;
     window.open(googleMapsUrl, '_blank');
   };
 
   return (
     <Container maxWidth="lg" className="ubicacion-section">
-      {/* Título */}
       <Typography
         variant="h3"
         className="galeria-title"
         sx={{
-          fontSize: { xs: '2.2rem', md: '2.7rem' }, // responsive directo
+          fontSize: { xs: '2.2rem', md: '2.7rem' },
           fontFamily: 'var(--font-section)',
           fontWeight: 'bold',
           color: 'var(--color-terracota)',
@@ -48,20 +47,19 @@ const Ubicacion: React.FC = () => {
       </Typography>
 
       <Box className="map-container">
-        {/* Mapa */}
         <GoogleMap
           mapContainerStyle={containerStyle}
-          center={tantiCenter}
+          center={swissCenter} // 👈 usa Suiza
           zoom={17}
           onLoad={(map) => {
             mapRef.current = map;
             setMapLoaded(true);
           }}
         >
-          {mapLoaded && <Marker position={tantiCenter} />}
+          {mapLoaded && <Marker position={swissCenter} />}{' '}
+          {/* 👈 marcador en Suiza */}
         </GoogleMap>
 
-        {/* Botón Cómo llegar */}
         <Button onClick={handleOpenInMaps} className="ubicacion-btn">
           Cómo llegar
         </Button>
