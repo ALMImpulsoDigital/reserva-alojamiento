@@ -7,7 +7,8 @@ import {
   deleteDoc,
   doc,
   Timestamp,
-  query, orderBy
+  query,
+  orderBy,
 } from 'firebase/firestore';
 import { db } from '../firebase/firebaseConfig';
 import { Reserva } from '../types/reserva'; // Importamos la interfaz correctamente
@@ -72,30 +73,31 @@ const AdminReservas = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const tableRef = useRef<HTMLTableElement | null>(null);
   const [deleteOpen, setDeleteOpen] = useState(false);
-const [reservaAEliminar, setReservaAEliminar] = useState<Reserva | null>(null);
-
+  const [reservaAEliminar, setReservaAEliminar] = useState<Reserva | null>(
+    null,
+  );
 
   useEffect(() => {
     const fetchReservas = async () => {
-  const reservasCollection = collection(db, 'reserva');
-  // 🔹 Ordena descendente (más recientes primero)
-  const q = query(reservasCollection, orderBy('fechaEntrada', 'desc'));
-  const snapshot = await getDocs(q);
+      const reservasCollection = collection(db, 'reserva');
+      // 🔹 Ordena descendente (más recientes primero)
+      const q = query(reservasCollection, orderBy('fechaEntrada', 'desc'));
+      const snapshot = await getDocs(q);
 
-  const reservasList: Reserva[] = snapshot.docs.map((doc) => {
-    const data = doc.data() as Omit<Reserva, 'id'>;
-    return {
-      ...data,
-      id: doc.id,
-      fechaEntrada: data.fechaEntrada
-         ? Timestamp.fromMillis(data.fechaEntrada.seconds * 1000)
-  : Timestamp.fromDate(new Date()), 
-      cantidadPersonas: data.cantidadPersonas || 0,
-      cantidadDias: data.cantidadDias || 0,
+      const reservasList: Reserva[] = snapshot.docs.map((doc) => {
+        const data = doc.data() as Omit<Reserva, 'id'>;
+        return {
+          ...data,
+          id: doc.id,
+          fechaEntrada: data.fechaEntrada
+            ? Timestamp.fromMillis(data.fechaEntrada.seconds * 1000)
+            : Timestamp.fromDate(new Date()),
+          cantidadPersonas: data.cantidadPersonas || 0,
+          cantidadDias: data.cantidadDias || 0,
+        };
+      });
+      setReservas(reservasList);
     };
-  });
-  setReservas(reservasList);
-};
 
     const fetchCabanas = async () => {
       const querySnapshot = await getDocs(collection(db, 'cabanas'));
@@ -236,12 +238,12 @@ const [reservaAEliminar, setReservaAEliminar] = useState<Reserva | null>(null);
 
       // 🔹 Actualiza la tabla inmediatamente con el nombre del cliente
       setReservas((prev) =>
-  [...prev, { ...newReserva, id: docRef.id }].sort(
-    (a, b) =>
-      new Date(b.fechaEntrada.toDate()).getTime() -
-      new Date(a.fechaEntrada.toDate()).getTime()
-  )
-);
+        [...prev, { ...newReserva, id: docRef.id }].sort(
+          (a, b) =>
+            new Date(b.fechaEntrada.toDate()).getTime() -
+            new Date(a.fechaEntrada.toDate()).getTime(),
+        ),
+      );
 
       // 🔹 Llamamos a la función para verificar reservas pendientes y enviar notificación si es necesario
       verificarReservasPendientes();
@@ -271,14 +273,14 @@ const [reservaAEliminar, setReservaAEliminar] = useState<Reserva | null>(null);
     }
   };
 
- const confirmarEliminar = async () => {
-  if (reservaAEliminar?.id) {
-    await deleteDoc(doc(db, "reserva", reservaAEliminar.id));
-    setReservas((prev) => prev.filter((r) => r.id !== reservaAEliminar.id));
-  }
-  setDeleteOpen(false);
-  setReservaAEliminar(null);
-};
+  const confirmarEliminar = async () => {
+    if (reservaAEliminar?.id) {
+      await deleteDoc(doc(db, 'reserva', reservaAEliminar.id));
+      setReservas((prev) => prev.filter((r) => r.id !== reservaAEliminar.id));
+    }
+    setDeleteOpen(false);
+    setReservaAEliminar(null);
+  };
 
   const handleEditReserva = (reserva: Reserva) => {
     setSelectedReserva(reserva);
@@ -347,9 +349,9 @@ const [reservaAEliminar, setReservaAEliminar] = useState<Reserva | null>(null);
           textDecoration: 'underline',
           color: '#4c473aff', // opcional: un marrón para acompañar tu fondo
           whiteSpace: 'normal',
-           wordBreak: 'break-word',   // 🔹 fuerza corte en palabras largas
-    overflowWrap: 'break-word', // 🔹 asegura que no se desborde
-    lineHeight: 1.2,            // 🔹 para que no quede demasiado espaciado
+          wordBreak: 'break-word', // 🔹 fuerza corte en palabras largas
+          overflowWrap: 'break-word', // 🔹 asegura que no se desborde
+          lineHeight: 1.2, // 🔹 para que no quede demasiado espaciado
           fontSize: {
             xs: '2.8rem', // pantallas muy chicas
             sm: '3rem', // tablets
@@ -448,11 +450,11 @@ const [reservaAEliminar, setReservaAEliminar] = useState<Reserva | null>(null);
                       color: '#ffffff',
                       border: '1px solid #ddd',
                       ...(titulo === 'Acciones' && {
-        minWidth: 150,       // ancho mínimo para aire
-        width: 160,          // ancho fijo opcional
-        textAlign: 'left',   // 👈 alinea el título a la izquierda
-  paddingLeft: '30px',
-      }),
+                        minWidth: 150, // ancho mínimo para aire
+                        width: 160, // ancho fijo opcional
+                        textAlign: 'left', //   alinea el título a la izquierda
+                        paddingLeft: '30px',
+                      }),
                     }}
                   >
                     {titulo}
@@ -515,11 +517,15 @@ const [reservaAEliminar, setReservaAEliminar] = useState<Reserva | null>(null);
                     <TableCell sx={{ border: '1px solid #eee' }}>
                       {reserva.cantidadPersonas}
                     </TableCell>
-                    <TableCell sx={{ border: '1px solid #eee',
-    minWidth: 150,
-    width: 160,
-    textAlign: 'left',
-  paddingLeft: '12px', }}>
+                    <TableCell
+                      sx={{
+                        border: '1px solid #eee',
+                        minWidth: 150,
+                        width: 160,
+                        textAlign: 'left',
+                        paddingLeft: '12px',
+                      }}
+                    >
                       <IconButton
                         color="primary"
                         onClick={() => handleEditReserva(reserva)}
@@ -527,15 +533,14 @@ const [reservaAEliminar, setReservaAEliminar] = useState<Reserva | null>(null);
                         <Edit />
                       </IconButton>
                       <IconButton
-  color="secondary"
-  onClick={() => {
-    setReservaAEliminar(reserva);
-    setDeleteOpen(true);
-  }}
->
-  <Delete />
-</IconButton>
-
+                        color="secondary"
+                        onClick={() => {
+                          setReservaAEliminar(reserva);
+                          setDeleteOpen(true);
+                        }}
+                      >
+                        <Delete />
+                      </IconButton>
                     </TableCell>
                   </TableRow>
                 ))}
@@ -772,32 +777,31 @@ const [reservaAEliminar, setReservaAEliminar] = useState<Reserva | null>(null);
         </DialogActions>
       </Dialog>
       <Dialog open={deleteOpen} onClose={() => setDeleteOpen(false)}>
-  <DialogTitle>Eliminar Reserva</DialogTitle>
-  <DialogContent>
-    <Typography>
-      ¿Estás seguro que deseas eliminar la reserva de la cabaña{" "}
-      <strong>
-        {cabanas.find((c) => c.id === reservaAEliminar?.cabanaId)?.nombre ||
-          "Desconocida"}
-      </strong>{" "}
-      del cliente{" "}
-      <strong>
-        {clientes.find((c) => c.id === reservaAEliminar?.clienteId)?.nombre ||
-          reservaAEliminar?.clienteId}
-      </strong>
-      ?
-    </Typography>
-  </DialogContent>
-  <DialogActions>
-    <Button onClick={() => setDeleteOpen(false)} color="secondary">
-      Cancelar
-    </Button>
-    <Button onClick={confirmarEliminar} color="error" variant="contained">
-      Eliminar
-    </Button>
-  </DialogActions>
-</Dialog>
-
+        <DialogTitle>Eliminar Reserva</DialogTitle>
+        <DialogContent>
+          <Typography>
+            ¿Estás seguro que deseas eliminar la reserva de la cabaña{' '}
+            <strong>
+              {cabanas.find((c) => c.id === reservaAEliminar?.cabanaId)
+                ?.nombre || 'Desconocida'}
+            </strong>{' '}
+            del cliente{' '}
+            <strong>
+              {clientes.find((c) => c.id === reservaAEliminar?.clienteId)
+                ?.nombre || reservaAEliminar?.clienteId}
+            </strong>
+            ?
+          </Typography>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={() => setDeleteOpen(false)} color="secondary">
+            Cancelar
+          </Button>
+          <Button onClick={confirmarEliminar} color="error" variant="contained">
+            Eliminar
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Container>
   );
 };

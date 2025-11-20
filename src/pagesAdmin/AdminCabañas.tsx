@@ -137,20 +137,19 @@ const AdminCabanas = () => {
   }, []);
 
   return (
-    <Container sx={{ pt: { xs: 0, sm: 0 } }}> 
+    <Container sx={{ pt: { xs: 0, sm: 0 } }}>
       <Typography
         variant="h4"
         align="center"
-        
         sx={{
           fontWeight: 'bold',
           fontFamily: 'Poppins, sans-serif', // podés usar la que prefieras
           textDecoration: 'underline',
           color: '#4c473aff', // opcional: un marrón para acompañar tu fondo
           whiteSpace: 'normal',
-          wordBreak: 'break-word',   // 🔹 fuerza corte en palabras largas
-    overflowWrap: 'break-word', // 🔹 asegura que no se desborde
-    lineHeight: 1.2,            // 🔹 para que no quede demasiado espaciado
+          wordBreak: 'break-word', // 🔹 fuerza corte en palabras largas
+          overflowWrap: 'break-word', // 🔹 asegura que no se desborde
+          lineHeight: 1.2, // 🔹 para que no quede demasiado espaciado
           fontSize: {
             xs: '2.8rem', // pantallas muy chicas
             sm: '3rem', // tablets
@@ -197,10 +196,10 @@ const AdminCabanas = () => {
                       color: '#ffffff', // Texto blanco
                       border: '1px solid #ddd',
                       ...(titulo === 'Acciones' && {
-        minWidth: 120,       // 👈 ancho mínimo
-        width: 140,          // 👈 ancho fijo opcional
-        textAlign: 'center', // 👈 centra el contenido
-      }),
+                        minWidth: 120, //   ancho mínimo
+                        width: 140, //   ancho fijo opcional
+                        textAlign: 'center', //   centra el contenido
+                      }),
                     }}
                   >
                     {titulo}
@@ -231,11 +230,14 @@ const AdminCabanas = () => {
                   <TableCell sx={{ border: '1px solid #eee' }}>
                     {cabana.descripcion}
                   </TableCell>
-                  <TableCell sx={{ border: '1px solid #eee',
-    minWidth: 120,       // 👈 mismo ancho mínimo
-    width: 140,          // 👈 mismo ancho fijo
-    textAlign: 'center', // 👈 centra los iconos
-     }}>
+                  <TableCell
+                    sx={{
+                      border: '1px solid #eee',
+                      minWidth: 120, //   mismo ancho mínimo
+                      width: 140, //   mismo ancho fijo
+                      textAlign: 'center', //   centra los iconos
+                    }}
+                  >
                     <IconButton
                       color="primary"
                       onClick={() => handleEditCabana(cabana)}

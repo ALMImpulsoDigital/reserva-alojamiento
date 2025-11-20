@@ -88,7 +88,7 @@ const Navbar: React.FC = () => {
           sx={{
             backgroundColor: '#a5482eff',
             left: 0,
-            right: drawerOpen ? `${drawerWidth}px` : 0, // 👈 el AppBar termina antes del Drawer
+            right: drawerOpen ? `${drawerWidth}px` : 0, //   el AppBar termina antes del Drawer
             transition: (theme) =>
               theme.transitions.create(['right'], {
                 duration: theme.transitions.duration.enteringScreen,
@@ -109,7 +109,7 @@ const Navbar: React.FC = () => {
         <AppBar
           position="fixed"
           sx={{
-            backgroundColor: '#9d452dff',
+            backgroundColor: '#b53917ff',
             boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
           }}
         >
@@ -134,7 +134,7 @@ const Navbar: React.FC = () => {
                   <Box
                     component={RouterLink}
                     to="/admin"
-                    onClick={handleDrawerToggle} // 👈 esto cierra el drawer
+                    onClick={handleDrawerToggle} //   esto cierra el drawer
                     sx={{
                       display: 'flex',
                       alignItems: 'center',
@@ -155,8 +155,8 @@ const Navbar: React.FC = () => {
                     sx={{
                       backgroundColor: '#e8e0d0',
                       borderRadius: '50%',
-                      p: '6px', // 👈 más chico que 8px
-                      width: '40px', // 👈 tamaño fijo opcional
+                      p: '6px', //   más chico que 8px
+                      width: '40px', //   tamaño fijo opcional
                       height: '40px',
                       '&:hover': { backgroundColor: '#836262ff' },
                     }}
@@ -167,13 +167,13 @@ const Navbar: React.FC = () => {
                 {/* Drawer lateral para mobile */}
                 <Drawer
                   anchor="right"
-                  variant="persistent" // 👈 hace que el contenido se “acomode”
+                  variant="persistent" //   hace que el contenido se “acomode”
                   open={drawerOpen}
                   ModalProps={{ keepMounted: true }}
                   PaperProps={{
                     sx: {
                       width: drawerWidth,
-                      mt: '64px', // 👈 que el Drawer empiece debajo del AppBar
+                      mt: '64px', //   que el Drawer empiece debajo del AppBar
                       borderLeft: '2px solid black',
                       backgroundColor: '#b7aca3',
                     },

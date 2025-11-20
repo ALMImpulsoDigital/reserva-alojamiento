@@ -29,17 +29,16 @@ const AppContent: React.FC = () => {
 
   return (
     <Box
-  sx={{
-    width: '100%',
-    minHeight: '100vh',
-    pt: '64px',
-    background: 'linear-gradient(135deg, #c4ae8aff, #e8e0d0) !important', 
-   backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-  }}
->
-
+      sx={{
+        width: '100%',
+        minHeight: '100vh',
+        pt: '64px',
+        background: 'linear-gradient(135deg, #f4d8abff, #e8e0d0) !important',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       {/* Oculta el Navbar solo en móviles cuando la ruta es /admin */}
       {!(isAdminRoute && isMobile) && <Navbar />}
 

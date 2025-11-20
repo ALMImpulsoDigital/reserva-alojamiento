@@ -8,7 +8,7 @@ import LocationOnIcon from '@mui/icons-material/LocationOn';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 import InstagramIcon from '@mui/icons-material/Instagram';
 
-import '../styles/contacto.css'; // 👈 importa tu CSS nuevo
+import '../styles/contacto.css'; //   importa tu CSS nuevo
 import Link from '@mui/material/Link';
 
 const Contacto: React.FC = () => {
@@ -23,7 +23,7 @@ const Contacto: React.FC = () => {
             fontFamily: 'var(--font-section)',
             fontWeight: 'bold',
             color: 'var(--color-terracota)',
-            marginBottom: { xs: '1.5rem', md: '2.5rem' }, // 👈 separación extra
+            marginBottom: { xs: '1.5rem', md: '2.5rem' }, //   separación extra
           }}
         >
           Contacto
@@ -40,7 +40,7 @@ const Contacto: React.FC = () => {
                 color: 'var(--color-oliva-oscuro)',
                 fontWeight: 550,
                 fontSize: { xs: '0.95rem', md: '1.1rem' }, // 📱 mobile / 💻 desktop
-                lineHeight: '36px', // 👈 igual al tamaño del ícono
+                lineHeight: '36px', //   igual al tamaño del ícono
               }}
             >
               Calle 123, Argentina
@@ -57,7 +57,7 @@ const Contacto: React.FC = () => {
                 color: 'var(--color-oliva-oscuro)',
                 fontWeight: 550,
                 fontSize: { xs: '0.95rem', md: '1.1rem' },
-                lineHeight: '36px', // 👈 igual al tamaño del ícono
+                lineHeight: '36px', //   igual al tamaño del ícono
               }}
             >
               <Link
@@ -81,7 +81,7 @@ const Contacto: React.FC = () => {
                 color: 'var(--color-oliva-oscuro)',
                 fontWeight: 550,
                 fontSize: { xs: '0.95rem', md: '1.1rem' },
-                lineHeight: '36px', // 👈 igual al tamaño del ícono
+                lineHeight: '36px', //   igual al tamaño del ícono
               }}
             >
               <Link

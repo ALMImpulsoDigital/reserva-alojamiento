@@ -1,14 +1,14 @@
 .contacto-wrapper {
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* 👈 pegado arriba */
+  align-items: flex-start; /*   pegado arriba */
   background-color: transparent;
-  padding: 0 0 0rem 0 !important; /* 👈 sin espacio arriba, solo abajo */
+  padding: 0 0 0rem 0 !important; /*   sin espacio arriba, solo abajo */
 }
 
 .contacto-box {
-  width: 100%;                /* un poco más compacto */     
-  max-width: none;  /* 👈 quita la limitación */
+  width: 100%; /* un poco más compacto */
+  max-width: none; /*  quita la limitación */
   background-color: var(--color-oliva-claro);
   padding: 0 1rem 1.5rem 1.5rem;
   color: var(--color-crema);
@@ -21,34 +21,29 @@
   font-family: var(--font-section) !important;
   color: var(--color-terracota) !important;
   font-weight: bold !important;
-  margin-bottom: 3rem !important;  /* 👈 más cerca del contenido */
-  margin-top: 0 !important;     /* 👈 cerca del borde superior */
+  margin-bottom: 3rem !important; /*  más cerca del contenido */
+  margin-top: 0 !important; /*  cerca del borde superior */
   text-align: center;
-font-size: 2.2rem;   /* 👈 intermedio */
-
-  }
-  @media (min-width: 900px) {
+  font-size: 2.2rem; /*  intermedio */
+}
+@media (min-width: 900px) {
   .contacto-title {
-    font-size: 2.7rem !important;  /* 👈 más grande en web */
+    font-size: 2.7rem !important; /*  más grande en web */
   }
 }
 
 /* Items (dirección, whatsapp, insta) */
 .contacto-item {
-  
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem; /* separa icono y texto */ 
-
-
-  
+  gap: 0.5rem; /* separa icono y texto */
 }
 
 .contacto-item .MuiTypography-root {
   font-family: var(--font-section) !important;
-  color: var(--color-oliva-oscuro) !important; /* 👈 fuerza color correcto */
-  font-weight: 550 !important; /* 👈 más negrita (Regular=400, Bold=700, 600 es semi-bold) */
+  color: var(--color-oliva-oscuro) !important; /*  fuerza color correcto */
+  font-weight: 550 !important; /*  más negrita (Regular=400, Bold=700, 600 es semi-bold) */
 }
 
 .contacto-icon {
@@ -56,7 +51,7 @@ font-size: 2.2rem;   /* 👈 intermedio */
   color: var(--color-oliva-oscuro);
   transition: transform 0.2s ease;
   cursor: pointer;
-    flex-shrink: 0;
+  flex-shrink: 0;
 }
 
 .contacto-icon:hover {
@@ -66,7 +61,6 @@ font-size: 2.2rem;   /* 👈 intermedio */
 
 .contacto-link {
   color: var(--color-oliva-oscuro) !important;
-  
 }
 .contacto-link:hover {
   color: var(--color-oliva-oscuro) !important;

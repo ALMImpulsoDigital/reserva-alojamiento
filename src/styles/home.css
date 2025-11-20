@@ -66,8 +66,8 @@
   background: rgba(247, 243, 233, 0.1);
 
   display: flex;
-  justify-content: flex-start; /* 👈 NO lo centres vertical */
-  align-items: center; /* 👈 centra horizontalmente */
+  justify-content: flex-start; /*   NO lo centres vertical */
+  align-items: center; /*   centra horizontalmente */
   flex-direction: column; /* apila en columna */
   padding-top: 1rem; /* separa un poquito del borde */
 }
@@ -78,28 +78,28 @@
   flex-direction: column;
   min-height: 40vh;
   margin-top: 0rem;
-  width: 100vw !important; /* 👈 asegura ancho completo */
+  width: 100vw !important; /*   asegura ancho completo */
   margin-left: calc(
     50% - 50vw
-  ) !important; /* 👈 corrige si hay padding lateral del body */
+  ) !important; /*   corrige si hay padding lateral del body */
 }
 
 @media (min-width: 900px) {
   .about-section {
     flex-direction: row;
-    margin-top: 2rem; /* 👈 Desktop: separado del hero */
+    margin-top: 2rem; /*   Desktop: separado del hero */
   }
 }
 
 .about-left {
-  width: 100%; /* 👈 en mobile ocupa todo */
+  width: 100%; /*   en mobile ocupa todo */
   margin: 0; /* nada de auto */
   background-color: var(--color-oliva-claro);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 2rem;
-  min-height: 150px; /* 👈 asegura espacio en mobile */
+  min-height: 150px; /*   asegura espacio en mobile */
   clip-path: polygon(
     0 0,
     /* arriba izquierda */ 100% 0,
@@ -127,10 +127,10 @@
   line-height: 1.2;
   text-shadow: 0 0 6px rgba(146, 136, 136, 0.6);
 
-  display: inline-block !important; /* 👈 ocupa solo su ancho de texto */
+  display: inline-block !important; /*   ocupa solo su ancho de texto */
   margin: 0 auto; /* sigue centrado */
-  padding-right: 1rem; /* 👈 esto lo “corre” de la derecha */
-  transform: translateX(-1.5rem); /* 👈 mueve el texto hacia la izquierda */
+  padding-right: 1rem; /*   esto lo “corre” de la derecha */
+  transform: translateX(-1.5rem); /*   mueve el texto hacia la izquierda */
 }
 
 .about-right {
@@ -157,8 +157,8 @@
   width: 100%;
   max-width: 600px;
   margin: 0 auto;
-  font-size: 1.1rem !important; /* 👈 tamaño equivalente a h4 */
-  line-height: 1.6; /* 👈 mejora legibilidad */
+  font-size: 1.1rem !important; /*   tamaño equivalente a h4 */
+  line-height: 1.6; /*   mejora legibilidad */
 }
 
 /* 👇 solo para pantallas grandes (web) */
