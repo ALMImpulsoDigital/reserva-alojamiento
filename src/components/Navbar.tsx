@@ -109,7 +109,7 @@ const Navbar: React.FC = () => {
         <AppBar
           position="fixed"
           sx={{
-            backgroundColor: '#b53917ff',
+            backgroundColor: 'rgba(155, 69, 69, 0.98)',
             boxShadow: '0 2px 4px rgba(0, 0, 0, 0.2)',
           }}
         >
